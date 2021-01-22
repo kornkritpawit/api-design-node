@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Lions</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <main>
@@ -11,20 +13,46 @@
 
     <form name="lions">
       <div class="textbox">
-        <input
-          type="text"
-          required
-          name="lion-name"/>
+        <input type="text" required name="lion-name" />
         <span class="highlight"></span>
         <span class="bar"></span>
         <label>lion name</label>
       </div>
 
+      <div class="textbox">
+        <input type="text" required name="lion-pride" />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>lion pride</label>
+      </div>
+
+
+      <input type="number" name="lion-age">
+      <select name="select">
+        <option value="female" selected>female</option>
+        <option value="male">male</option>
+      </select>
+      <button>submit</button>
+    </form>
+
+    <div class="content">
+      <ul class="lion-list"></ul>
+    </div>
+  </main> 
+  <script src="app.js"></script>
+ 
+
+
+    <!-- <form name="lions" action="/lions" method="POST">
     <div class="textbox">
-      <input
-        type="text"
-        required
-        name="lion-pride"/>
+      <input type="text" required name="lion-name" />
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>lion name</label>
+    </div>
+
+    <div class="textbox">
+      <input type="text" required name="lion-pride" />
       <span class="highlight"></span>
       <span class="bar"></span>
       <label>lion pride</label>
@@ -32,17 +60,19 @@
 
 
     <input type="number" name="lion-age">
-    <select name="select">
+    <select name="gender">
       <option value="female" selected>female</option>
       <option value="male">male</option>
     </select>
     <button>submit</button>
-    </form>
+  </form>
 
-    <div class="content">
-      <ul class="lion-list"></ul>
-    </div>
+  <div class="content">
+    <ul class="lion-list"></ul>
+  </div> -->
+
+
   </main>
-<script src="app.js"></script>
 </body>
+
 </html>

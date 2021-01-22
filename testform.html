@@ -1,0 +1,27 @@
+ <form name="lions" action="http://localhost:3000/lions" method="POST">
+    <div class="textbox">
+      <input type="text" required name="name" />
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>lion name</label>
+    </div>
+
+    <div class="textbox">
+      <input type="text" required name="pride" />
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>lion pride</label>
+    </div>
+
+
+    <input type="number" name="lion-age">
+    <select name="gender">
+      <option value="female" selected>female</option>
+      <option value="male">male</option>
+    </select>
+    <button type="submit">submit</button>
+  </form>
+
+  <div class="content">
+    <ul class="lion-list"></ul>
+  </div>
