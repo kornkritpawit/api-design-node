@@ -20,10 +20,15 @@ var id = 0;
 
 var updateId = function(req, res, next) {
   // fill this out. this is the route middleware for the ids
+  if (!req.body.id) {
+    id++;
+    req.body.id = id + '';
+  }
+  next();
 };
 
 app.use(morgan('dev'))
-app.use(express.static('client'));
+app.use(express.static('../client'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -31,14 +36,31 @@ app.use(bodyParser.json());
 app.param('id', function(req, res, next, id) {
   // fill this out to find the lion based off the id
   // and attach it to req.lion. Rember to call next()
+  var lion = _.find(lions, {id: id});
+  console.log(id)
+  if (lion) {
+    req.lion = lion;
+    next();
+  } else{
+    res.send();
+  }
 });
 
-app.get('/lions', function(req, res){
+app.all('/lions', (req, res, next) => {
+  console.log('lions!!!');
+  next();
+})
+
+app.get('/lions', function(req, res, next){
   res.json(lions);
+  
+  // next(new Error('noope'));
 });
 
 app.get('/lions/:id', function(req, res){
   // use req.lion
+  var lion = req.lion
+  console.log()
   res.json(lion || {});
 });
 
@@ -46,7 +68,6 @@ app.post('/lions', updateId, function(req, res) {
   var lion = req.body;
 
   lions.push(lion);
-
   res.json(lion);
 });
 
@@ -65,6 +86,15 @@ app.put('/lions/:id', function(req, res) {
     res.json(updatedLion);
   }
 });
+
+app.use((err, req, res, next)=> {
+  // console.log('her in error');
+  // console.log(err);
+
+  if (err) {
+    res.status(500).send(err);
+  }
+})
 
 app.listen(3000);
 console.log('on port 3000');
