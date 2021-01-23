@@ -1,6 +1,6 @@
 var app = require('./server');
-var request = require('supertest');
-var expect = require('chai').expect;
+var request = require('supertest'); //calling our server
+var expect = require('chai').expect; //calling assertino
 
 // TODO: make tests for the other CRUD routes
 // DELETE, UPDATE, PUT, GET ONE
