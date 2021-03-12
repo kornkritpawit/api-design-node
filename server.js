@@ -2,7 +2,8 @@
 // that will send back the index.html file on a GET request to '/'
 // it should then send back jsonData on a GET to /data
 var fs = require('fs')
-var express = require('express')
+var express = require('express');
+const { json } = require('body-parser');
 
 var app = express()
 
@@ -21,9 +22,10 @@ app.get('/', (req, res) => {
   })
 })
 
-// app.get('/data', (req, res)=> {
-//   res.json(jsonData);
-// })
+app.get('/data', (req, res)=> {
+  // res.json(jsonData);
+  res.send(jsonData)
+})
 
 // app.listen(3000)
 
