@@ -28,7 +28,7 @@ var updateId = function(req, res, next) {
 };
 
 app.use(morgan('dev'))
-app.use(express.static('../client'));
+app.use(express.static('client'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
