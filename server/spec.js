@@ -3,7 +3,7 @@ var request = require('supertest'); //calling our server
 var expect = require('chai').expect; //calling assertino
 
 // TODO: make tests for the other CRUD routes
-// DELETE, UPDATE, PUT, GET ONE
+// DELETE, UPDATE, POST, PUT, GET ONE
 // to run the test type mocha server/specs.js
 
 describe('[LIONS]', function(){

@@ -13,6 +13,7 @@ var updateId = function(req, res, next) {
 
 tigerRouter.param('id', function(req, res, next, id) {
   var tiger = _.find(tigers, {id: id});
+  console.log(tiger)
 
   if (tiger) {
     req.tiger = tiger;
