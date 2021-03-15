@@ -33,8 +33,10 @@ app.param('id', function(req, res, next, id) {
   console.log(id)
   if (lion) {
     req.lion = lion;
+    console.log(req.lion)
     next();
   } else{
+    // res.status().send()
     res.send();
   }
 });
