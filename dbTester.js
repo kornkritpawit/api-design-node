@@ -10,12 +10,16 @@ var mongoose = require('mongoose');
 // run node db.Tester to execute this file
 // MAKE SURE MONGOD is RUNNING
 
+mongoose.connect('mongodb://localhost:27019/puppies');
+
 var TodoSchema = new mongoose.Schema({
   name: String,
   completed: Boolean
 });
 
-var Todo = mongoose.model('todo', TodoSchema);
+var Todo = mongoose.model('todo', TodoSchema); //second argument make mongoose create a model
+//create or use collections todos
+// if no second argument mongoose will know that it is referenced model
 Todo.create({
   name: 'clean up your room!!!',
   completed: false
