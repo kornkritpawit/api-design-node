@@ -22,7 +22,7 @@ var logger = {
           // turn the object to a string so we
           // can log all the properties and color it
           var string = JSON.stringify(arg, 2);
-          return string.magenta;
+          return string.magenta; //magenta = purple
         } else {
           // coerce to string to color
           arg+='';
