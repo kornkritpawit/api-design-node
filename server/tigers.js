@@ -29,37 +29,75 @@ tigerRouter.param('id', function(req, res, next, id) {
   }
 });
 
-tigerRouter.get('/', function(req, res){
-  res.json(tigers);
-});
+// tigerRouter.get('/', function(req, res){
+//   res.json(tigers);
+// });
+// tigerRouter.post('/', updateId, function(req, res) {
+//   var lion = req.body;
 
-tigerRouter.get('/:id', function(req, res){
-  var lion = req.lion;
-  res.json(lion || {});
-});
+//   tigers.push(lion);
 
-tigerRouter.post('/', updateId, function(req, res) {
-  var lion = req.body;
+//   res.json(lion);
+// });
 
-  tigers.push(lion);
+//more clean
+tigerRouter.route('/')
+  .get((req, res) => {
+    res.json(tigers);
+  })
+  .post(updateId, (req, res)=>{
+    var lion = req.body;
 
-  res.json(lion);
-});
+    tigers.push(lion);
+  
+    res.json(lion);
+  })
+
+tigerRouter.route('/:id')
+  .get(function(req, res){
+    var lion = req.lion;
+    res.json(lion || {});
+  })
+  .put(function(req, res) {
+    var update = req.body;
+    if (update.id) {
+      delete update.id
+    }
+  })
+  .delete((req, res) => {
+    var tiger = _.findIndex(tigers, {id: req.params.id});
+    tigers.splice(tiger, 1);
+    console.log(req.tiger)
+    res.json(req.tiger)
+  })
+  
 
 
-tigerRouter.put('/:id', function(req, res) {
-  var update = req.body;
-  if (update.id) {
-    delete update.id
-  }
 
-  var lion = _.findIndex(tigers, {id: req.params.id});
-  if (!tigers[lion]) {
-    res.send();
-  } else {
-    var updatedLion = _.assign(tigers[lion], update);
-    res.json(updatedLion);
-  }
-});
+// tigerRouter.get('/:id', function(req, res){
+//   var lion = req.lion;
+//   res.json(lion || {});
+// });
+
+
+
+// tigerRouter.put('/:id', function(req, res) {
+//   var update = req.body;
+//   if (update.id) {
+//     delete update.id
+//   }
+
+//   var lion = _.findIndex(tigers, {id: req.params.id});
+//   if (!tigers[lion]) {
+//     res.send();
+//   } else {
+//     var updatedLion = _.assign(tigers[lion], update);
+//     res.json(updatedLion);
+//   }
+// });
+
+
+
+
 
 module.exports = tigerRouter;

@@ -1,5 +1,8 @@
 // TODO: mount the tigers route with a a new router just for tigers
 // exactly like lions below
+
+// global.config = {}
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
