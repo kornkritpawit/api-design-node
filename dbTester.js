@@ -22,7 +22,8 @@ var Todo = mongoose.model('todo', TodoSchema); //second argument make mongoose c
 // if no second argument mongoose will know that it is referenced model
 Todo.create({
   name: 'clean up your room!!!',
-  completed: false
+  completed: false,
+  thing: true // not get save
 }).then(function(err, todo) {
   console.log(err, todo);
 });
