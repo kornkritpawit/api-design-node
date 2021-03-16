@@ -3,6 +3,7 @@ var app = express();
 var api = require('./api/api');
 var config = require('./config/config');
 // db.url is different depending on NODE_ENV
+console.log(config.db.url)
 require('mongoose').connect(config.db.url);
 
 // setup the app middlware
