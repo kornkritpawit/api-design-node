@@ -4,7 +4,8 @@ var logger = require('../../util/logger');
 
 exports.params = function(req, res, next, id) {
   Post.findById(id)
-    .populate('author')
+    // .populate('author')
+    .populate('author', 'username')
     .exec()
     .then(function(post) {
       if (!post) {
@@ -20,7 +21,9 @@ exports.params = function(req, res, next, id) {
 
 exports.get = function(req, res, next) {
   Post.find({})
-    .populate('author categories')
+    // .populate('author categories')
+    .populate('author', 'username')
+    .populate('categories')
     .exec()
     .then(function(posts){
       res.json(posts);

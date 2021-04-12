@@ -4,6 +4,8 @@ var signToken = require('../../auth/auth').signToken;
 
 exports.params = function(req, res, next, id) {
   User.findById(id)
+    .select('-password')
+    .exec() // not select password
     .then(function(user) {
       if (!user) {
         next(new Error('No user with that id'));
@@ -50,7 +52,10 @@ exports.post = function(req, res, next) {
   var newUser = new User(req.body);
 
   newUser.save(function(err, user) {
-    if(err) {next(err);}
+    if(err) {
+      // next(err);
+      return next(err)
+    }
 
     var token = signToken(user._id);
     res.json({token: token});
@@ -65,4 +70,9 @@ exports.delete = function(req, res, next) {
       res.json(removed);
     }
   });
+};
+
+exports.me = function(req, res) {
+  // console.log(req.user)
+  res.json(req.user.toJson());
 };
